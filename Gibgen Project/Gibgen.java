@@ -14,7 +14,7 @@ public class Gibgen{
     Scanner input = new Scanner(System.in);
     String text = "";
     System.out.println("Enter text to scramble: ");
-    boolean done = false;
+    boolean done = false;   
     while (!done) {
       text = input.nextLine();
 
@@ -29,8 +29,8 @@ public class Gibgen{
   public Gibgen() {
   }          
   //Scrambles a word while keeping the first and
-  //last letters the same(also includes numbers 
-  //and punctuations.
+  //last letters the same(also keeps numbers 
+  //and punctuations where they are).
   private static String scramble(String txt) {
     StringTokenizer st = new StringTokenizer(txt, " ,.!?()-+/*=%@#$&:;\"'", true);
     String[] tokens = new String[st.countTokens()];
@@ -65,7 +65,7 @@ public class Gibgen{
     }
     return scrambled;
 }
-  //Method to perform the "scrambling"
+  //Method to perform the "scrambling" on each of the words
   //@ensure:      will return the scrambled words
   void performScramble(String line) {
     String[] words = line.split("\\s+");
