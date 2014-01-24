@@ -8,8 +8,11 @@ import java.io.*;
  * Program that reads in a line of text and scrambles the words.
  */
 public class Gibgen{
+    static int charScrambled = 0;
+    static int wordsScrambled = 0;
   //Runs the program
   public static void main(String args[]){
+    long start = System.currentTimeMillis();
     Gibgen g = new Gibgen();
     Scanner input = new Scanner(System.in);
     String text = "";
@@ -23,8 +26,12 @@ public class Gibgen{
      } 
      else {
         g.performScramble(text);
-     }
+     }     
     }
+    long end = System.currentTimeMillis();
+    System.out.println("Time taken to process in milliseconds: " + (end-start));
+    System.out.println("Letters scrambled: " + charScrambled);
+    System.out.println("Words scrambled: " + wordsScrambled);
   }
   public Gibgen() {
   }          
@@ -54,6 +61,7 @@ public class Gibgen{
         ArrayList<Character> c = new ArrayList<Character>();
         for(int j = 1; j < wordlength; j++) {
           c.add(tokens[i].charAt(j));
+          charScrambled = charScrambled + 1;
         }
         Collections.shuffle(c);
         String z = new String();
@@ -70,7 +78,10 @@ public class Gibgen{
   void performScramble(String line) {
     String[] words = line.split("\\s+");
     for (String word: words) {
-        System.out.println(scramble(word));
+        wordsScrambled = wordsScrambled + 1;
+        System.out.println(scramble(word));  
     }    
+    System.out.println("Press enter to see statistics of scrambling or begin"
+            + " next sentence.");
 }
 }
