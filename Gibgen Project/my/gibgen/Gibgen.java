@@ -1,3 +1,5 @@
+package my.gibgen;
+
 import java.util.*;
 import java.io.*;
 
@@ -10,13 +12,14 @@ import java.io.*;
 public class Gibgen{
     static int charScrambled = 0;
     static int wordsScrambled = 0;
+    static String finSc = "";
   //Runs the program
-  public static void main(String args[]){
+ /* public static void main(String args[]){
     long start = System.currentTimeMillis();
     Gibgen g = new Gibgen();
     Scanner input = new Scanner(System.in);
     String text = "";
-    System.out.println("Enter text to scramble: ");
+    //System.out.println("Enter text to scramble: ");
     boolean done = false;   
     while (!done) {
       text = input.nextLine();
@@ -29,10 +32,11 @@ public class Gibgen{
      }     
     }
     long end = System.currentTimeMillis();
-    System.out.println("Time taken to process in milliseconds: " + (end-start));
-    System.out.println("Letters scrambled: " + charScrambled);
-    System.out.println("Words scrambled: " + wordsScrambled);
+    //System.out.println("Time taken to process in milliseconds: " + (end-start));
+    //System.out.println("Letters scrambled: " + charScrambled);
+    //System.out.println("Words scrambled: " + wordsScrambled);
   }
+   */ 
   public Gibgen() {
   }          
   //Scrambles a word while keeping the first and
@@ -77,11 +81,17 @@ public class Gibgen{
   //@ensure:      will return the scrambled words
   void performScramble(String line) {
     String[] words = line.split("\\s+");
+    String ss = "";
     for (String word: words) {
         wordsScrambled = wordsScrambled + 1;
+        ss = ss+ " "+scramble(word);
         System.out.println(scramble(word));  
     }    
-    System.out.println("Press enter to see statistics of scrambling or begin"
-            + " next sentence.");
+    finSc = ss;
+    //System.out.println("Press enter to see statistics of scrambling or begin"
+            //+ " next sentence.");
 }
+  public String getFin() {
+      return finSc;
+  }
 }
